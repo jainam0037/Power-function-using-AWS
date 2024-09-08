@@ -18,6 +18,7 @@ This project is a simple web application that allows users to input two numbers 
 ### Steps:
 1. **Upload the HTML page**: Create an `index.html` page, which provides the UI for inputting numbers and a button to trigger the calculation.
 2. **Hosting using Amplify**: Deploy the web page by uploading a zip file containing the HTML to Amplify for hosting.
+![Amplify Math Deployed Screenshot](https://github.com/jainam0037/Power-function-using-AWS/blob/main/Amplify%20Math%20Deployed.png)
 
 ---
 
