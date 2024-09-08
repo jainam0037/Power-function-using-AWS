@@ -26,25 +26,55 @@ This project is a simple web application that allows users to input two numbers 
 **Goal**: To calculate the power of the base using the exponent.
 
 ### Steps:
-1. Navigate to the AWS Lambda console.
-2. Click **Create Function** and select the "Author from scratch" option.
-3. Name your function `power_of_math`.
-4. Choose **Python** as the runtime and set up the execution role with basic Lambda permissions.
-5. Click **Create** to create the Lambda function.
-6. Replace the placeholder Lambda code with the following:
+1.	Create a Lambda Function: You created a Lambda function named power of math that accepts the base and exponent and returns the result.
+2.	Code the Lambda Function: Wrote Python code that reads input, calculates the power using Python’s pow() function, and returns the result.
+3.	Navigate to the AWS Lambda console.
+4.	Click Create Function and select the "Author from scratch" option.
+5.	Name your function, e.g., power_of_math.
+6.	Choose Python as the runtime language and set up the execution role with basic Lambda permissions.
+7.	Click Create to create the Lambda function.
+8.	Replace the placeholder Lambda function code with the actual code that calculates the power of a number:
+9.	Save the code and Deploy it so the Lambda function can be triggered by API Gateway later.
+10.	Test the function by providing a sample input, e.g., base = 2 and exponent = 4.
+11.	Use the Lambda test feature to simulate sending this data. The result should return 16.
+
 
 ```python
+# import the JSON utility package
 import json
+# import the Python math library
+import math
 
+# import the AWS SDK (for Python the package name is boto3)
+import boto3
+# import two packages to help us with dates and date formatting
+from time import gmtime, strftime
+
+# create a DynamoDB object using the AWS SDK
+dynamodb = boto3.resource('dynamodb')
+# use the DynamoDB object to select our table
+table = dynamodb.Table('PowerOfMathDatabase')
+# store the current time in a human readable format in a variable
+now = strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())
+
+# define the handler function that the Lambda service will use an entry point
 def lambda_handler(event, context):
-    base = event['base']
-    exponent = event['exponent']
-    result = pow(base, exponent)
-    return {
-        'statusCode': 200,
-        'body': json.dumps({'result': result})
-    }
 
+# extract the two numbers from the Lambda service's event object
+    mathResult = math.pow(int(event['base']), int(event['exponent']))
+
+# write result and time to the DynamoDB table using the object we instantiated and save response in a variable
+    response = table.put_item(
+        Item={
+            'ID': str(mathResult),
+            'LatestGreetingTime':now
+            })
+
+# return a properly formatted JSON object
+    return {
+    'statusCode': 200,
+    'body': json.dumps('Your result is ' + str(mathResult))
+    }
 ```
 
 ## Save and Deploy the Lambda Function
