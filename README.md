@@ -39,6 +39,7 @@ This project is a simple web application that allows users to input two numbers 
 10.	Test the function by providing a sample input, e.g., base = 2 and exponent = 4.
 11.	Use the Lambda test feature to simulate sending this data. The result should return 16.
 
+![Lambda function ](https://github.com/user-attachments/assets/3dd8c594-fe75-4209-8470-84d03aa7529c)
 
 ```python
 import json
@@ -74,6 +75,7 @@ def lambda_handler(event, context):
 4. Enable **CORS** to allow the front-end to make requests to the API.
 5. Deploy the API and create a new stage (e.g., `dev`).
 6. Copy the **Invoke URL** of the API for use in the front-end application.
+![API Gateway(Deploying API)](https://github.com/user-attachments/assets/8392585a-c91f-412c-95ec-0ab04bd8d56f)
 
 ---
 
@@ -84,6 +86,7 @@ def lambda_handler(event, context):
 ### Steps:
 1. Use API Gateway’s built-in testing tool (lightning icon) to send test data (base and exponent).
 2. Verify that the Lambda function was executed successfully and returned the correct result.
+![deploy api](https://github.com/user-attachments/assets/bbee970c-b95a-4d12-b3b1-ce0702642e75)
 
 ---
 
@@ -116,10 +119,12 @@ def lambda_handler(event, context):
 1. Update the `index.html` page to make a **POST** request to the API Gateway endpoint using the user input (base and exponent).
 2. Add JavaScript to the HTML page to call the API and pass the input values for processing.
 
+
 ---
 
 ## 8. Testing the Complete Workflow
 **Goal**: To verify that the entire system functions as expected.
+![Testing API](https://github.com/user-attachments/assets/5315a93f-289b-4e3c-a8d5-b8246381dd48)
 
 ### Steps:
 1. Deploy the updated HTML page by creating a new zip file and redeploying it using Amplify.
