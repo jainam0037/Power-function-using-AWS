@@ -130,6 +130,8 @@ def lambda_handler(event, context):
 1. Deploy the updated HTML page by creating a new zip file and redeploying it using Amplify.
 2. Test the web app by entering values (e.g., base = 2, exponent = 8) and clicking **Calculate**. Verify the correct result (e.g., 256) is displayed.
 
+![Final testing](https://github.com/user-attachments/assets/07523d05-f03b-480a-b195-e995d1a5c3e3)
+
 ---
 
 ## 9. Clean-Up
